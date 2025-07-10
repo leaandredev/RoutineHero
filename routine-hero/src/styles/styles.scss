@@ -1,6 +1,12 @@
 @use '@angular/material' as mat;
 @use 'flex-grid.scss';
 
+:root {
+    @include mat.toolbar-overrides((container-background-color: #edebe9,
+            container-text-color: #00b8d5,
+        ));
+}
+
 html {
     color-scheme: light;
     @include mat.theme((color: mat.$azure-palette,

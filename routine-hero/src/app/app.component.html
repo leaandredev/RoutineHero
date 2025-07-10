@@ -1,4 +1,12 @@
-<div class="app-container">
+<mat-toolbar color="secondary" class="flex-space-between">
+    <img id="app-logo" src="logo.png" alt="logo" />
     <h1>Routine Hero</h1>
+    <div class="flex-grow"></div>
+    <div>
+        <a mat-button routerLink="parent" routerLinkActive="router-link-active">Parent</a>
+        <a mat-button routerLink="kids" routerLinkActive="router-link-active">Enfant</a>
+    </div>
+</mat-toolbar>
+<div class="app-container">
     <router-outlet></router-outlet>
 </div>

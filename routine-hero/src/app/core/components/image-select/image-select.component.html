@@ -1,0 +1,15 @@
+<div class="profile-select-container flex-row">
+    <mat-form-field appearance="outline">
+        <mat-label>Photo de profil</mat-label>
+        <mat-select [(value)]="selectedPicture">
+            <mat-option *ngFor="let profile of profilePictures" [value]="profile.path">
+                <img [src]="profile.path" width="40" alt="{{ profile.label }}" />
+                {{ profile.label }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="selectedPicture" class="padding-medium">
+        <img [src]="selectedPicture" width="50" alt="Image sélectionnée" />
+    </div>
+</div>

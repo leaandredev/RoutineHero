@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+@use 'flex-grid.scss';
+@use 'colors.scss' as color;
+@use '_theme-colors.scss' as theme;
+@use 'sass:map';
+
+:root {
+    @include mat.toolbar-overrides((container-background-color: color.$custom-background,
+            container-text-color: color.$custom-dark-blue,
+        ));
+}
+
+html {
+    @include mat.theme((color: (primary: theme.$primary-palette,
+                tertiary: theme.$tertiary-palette,
+                theme-type: light,
+            ),
+            typography: Roboto,
+            density: 0));
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

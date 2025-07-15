@@ -4,7 +4,7 @@
     </button>
     <div class="flex-container flex-column">
         <h2>Créer un profil</h2>
-        <form *ngIf="form" [formGroup]="form">
+        <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="flex-container flex-column">
                 <app-image-select formControlName="profilePicture"></app-image-select>
                 <mat-form-field appearance="outline">

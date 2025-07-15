@@ -12,7 +12,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { Profile } from '../../../../core/interface/profile.interface';
+import { Profile } from '../../../../core/interfaces/profile.interface';
+import { ProfileService } from '../../../../core/services/profile.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-form',
@@ -32,7 +35,12 @@ import { Profile } from '../../../../core/interface/profile.interface';
 export class ProfilFormComponent implements OnInit {
   public form: FormGroup | undefined;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private profileService: ProfileService,
+    private matSnackBar: MatSnackBar,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -44,7 +52,11 @@ export class ProfilFormComponent implements OnInit {
   public submitForm() {
     if (this.form && this.form.valid) {
       const profilRequest = this.form.value as Profile;
-      // TODO: Appel vers le service pour enregistrer
+      this.profileService.create(profilRequest);
+      this.matSnackBar.open('Votre article a bien été créé.', 'Close', {
+        duration: 3000,
+      });
+      this.router.navigate(['/parent']);
     }
   }
 

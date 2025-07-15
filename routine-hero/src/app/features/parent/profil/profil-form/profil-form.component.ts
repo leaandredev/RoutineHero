@@ -45,7 +45,7 @@ export class ProfilFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       profilePicture: ['', Validators.required],
-      name: ['', Validators.required],
+      profileName: ['', Validators.required],
     });
   }
 

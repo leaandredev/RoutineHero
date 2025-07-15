@@ -1,8 +1,8 @@
-<mat-card appearance="outlined">
+<mat-card *ngIf="profile" class="margin-medium">
     <mat-card-header>
         <mat-card-title-group>
-            <img mat-card-sm-image alt="Image du profile" src="/profile_icons/dragon_3410567.png">
-            <mat-card-title>Nom de l'enfant</mat-card-title>
+            <img mat-card-sm-image alt="Image du profile" [src]="profile.profilePicture">
+            <mat-card-title>{{ profile.profileName }}</mat-card-title>
         </mat-card-title-group>
     </mat-card-header>
     <mat-card-actions>

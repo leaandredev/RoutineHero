@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../../../core/services/profile.service';
 import { CommonModule } from '@angular/common';
+import { ProfileCardComponent } from '../profile-card/profile-card.component';
+import { Observable } from 'rxjs';
 import { Profile } from '../../../core/interfaces/profile.interface';
-import { ProfileCardComponent } from "../profile-card/profile-card.component";
 
 @Component({
   selector: 'app-liste-profiles',
@@ -10,10 +11,16 @@ import { ProfileCardComponent } from "../profile-card/profile-card.component";
   templateUrl: './liste-profiles.component.html',
   styleUrl: './liste-profiles.component.scss',
 })
-export class ListeProfilesComponent {
-  public profiles: Profile[];
+export class ListeProfilesComponent implements OnInit {
+  public profiles$!: Observable<Profile[]>;
 
-  constructor(private profileService: ProfileService) {
-    this.profiles = this.profileService.getAll();
+  constructor(private profileService: ProfileService) {}
+
+  ngOnInit(): void {
+    this.profiles$ = this.profileService.getProfiles();
+  }
+
+  public trackByProfileId(id: number, profile: Profile) {
+    return profile.profileId;
   }
 }

@@ -1,21 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Profile } from '../interfaces/profile.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
-  constructor() {}
+  private profiles$: BehaviorSubject<Profile[]>;
 
-  public getAll() {
-    const jsonProfiles = localStorage.getItem('profiles');
-    return jsonProfiles ? JSON.parse(jsonProfiles) : [];
+  constructor() {
+    this.profiles$ = new BehaviorSubject<Profile[]>(
+      this.getProfilesFromStorage()
+    );
+  }
+
+  public getProfiles(): Observable<Profile[]> {
+    return this.profiles$.asObservable();
   }
 
   public create(profile: Profile) {
     profile.profileId = crypto.randomUUID();
-    const profiles = this.getAll();
-    profiles.push(profile);
+    this.saveProfiles([...this.profiles$.value, profile]);
+  }
+
+  public delete(id: string) {
+    const updatedProfiles = this.profiles$.value.filter(
+      (profile) => profile.profileId != id
+    );
+    this.saveProfiles(updatedProfiles);
+  }
+
+  // Storage
+
+  private getProfilesFromStorage() {
+    const jsonProfiles = localStorage.getItem('profiles');
+    return jsonProfiles ? JSON.parse(jsonProfiles) : [];
+  }
+
+  private saveProfiles(profiles: Profile[]) {
     localStorage.setItem('profiles', JSON.stringify(profiles));
+    this.profiles$.next(profiles);
   }
 }

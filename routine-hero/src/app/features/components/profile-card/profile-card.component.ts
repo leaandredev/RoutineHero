@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { Profile } from '../../../core/interfaces/profile.interface';
 import { ContextService } from '../../../core/services/context.service';
 import { AppContext } from '../../../core/models/app-context.enum';
+import { ProfileService } from '../../../core/services/profile.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile-card',
@@ -16,9 +18,20 @@ export class ProfileCardComponent implements OnInit {
   @Input() profile: Profile | null = null;
   public canModify: boolean = false;
 
-  constructor(private contextService: ContextService) {}
+  constructor(
+    private contextService: ContextService,
+    private profileService: ProfileService,
+    private matSnackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.canModify = this.contextService.getCurrentValue() == AppContext.Parent;
+  }
+
+  deleteProfile(profileId: string) {
+    this.profileService.delete(profileId);
+    this.matSnackBar.open('Le profile a bien été supprimé.', 'Close', {
+      duration: 3000,
+    });
   }
 }

@@ -7,6 +7,6 @@
     </mat-card-header>
     <mat-card-actions *ngIf="canModify">
         <button mat-button>MODIFIER</button>
-        <button mat-button>SUPPRIMER</button>
+        <button mat-button (click)="deleteProfile(profile.profileId)">SUPPRIMER</button>
     </mat-card-actions>
 </mat-card>

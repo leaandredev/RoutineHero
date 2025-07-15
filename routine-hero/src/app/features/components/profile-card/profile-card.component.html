@@ -1,11 +1,11 @@
-<mat-card *ngIf="profile" class="margin-medium">
+<mat-card *ngIf="profile" class="margin-medium padding-small">
     <mat-card-header>
         <mat-card-title-group>
             <img mat-card-sm-image alt="Image du profile" [src]="profile.profilePicture">
             <mat-card-title>{{ profile.profileName }}</mat-card-title>
         </mat-card-title-group>
     </mat-card-header>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="canModify">
         <button mat-button>MODIFIER</button>
         <button mat-button>SUPPRIMER</button>
     </mat-card-actions>

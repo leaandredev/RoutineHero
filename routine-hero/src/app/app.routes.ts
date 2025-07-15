@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { parentRoutes } from './features/parent/parent.routes';
+import { childrenRoutes } from './features/children/children.routes';
 
 export const routes: Routes = [
   {
@@ -7,8 +8,12 @@ export const routes: Routes = [
     children: parentRoutes,
   },
   {
+    path: 'children',
+    children: childrenRoutes,
+  },
+  {
     path: '',
-    redirectTo: '/parent',
+    redirectTo: '/children',
     pathMatch: 'full',
   },
 ];

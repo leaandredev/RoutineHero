@@ -1,7 +1,10 @@
-<div class="profile-select-container flex-row">
+<div class="flex-container flex-column">
+    <div class="padding-medium">
+        <img [src]="pictureDisplay" width="50" alt="Image sélectionnée" />
+    </div>
     <mat-form-field appearance="outline">
         <mat-label>Photo de profil</mat-label>
-        <mat-select [(value)]="selectedPicture">
+        <mat-select [value]="selectedPicture" (selectionChange)="onPictureSelected($event.value)">
             <mat-option *ngFor="let profile of profilePictures" [value]="profile.path">
                 <img [src]="profile.path" width="40" alt="{{ profile.label }}" />
                 {{ profile.label }}
@@ -9,7 +12,4 @@
         </mat-select>
     </mat-form-field>
 
-    <div *ngIf="selectedPicture" class="padding-medium">
-        <img [src]="selectedPicture" width="50" alt="Image sélectionnée" />
-    </div>
 </div>

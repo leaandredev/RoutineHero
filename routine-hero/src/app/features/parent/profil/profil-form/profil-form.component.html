@@ -1,2 +1,18 @@
-<h2>Créer un profil</h2>
-<app-image-select></app-image-select>
+<div>
+    <button mat-icon-button (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="flex-container flex-column">
+        <h2>Créer un profil</h2>
+        <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="flex-container flex-column">
+                <app-image-select formControlName="profilePicture"></app-image-select>
+                <mat-form-field appearance="outline">
+                    <mat-label>Prénom</mat-label>
+                    <input matInput formControlName="name" maxlength="50">
+                </mat-form-field>
+                <button mat-raised-button color="secondary" type="submit">Créer</button>
+            </div>
+        </form>
+    </div>
+</div>

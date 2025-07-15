@@ -17,7 +17,7 @@ export class ListeProfilesComponent implements OnInit {
   constructor(private profileService: ProfileService) {}
 
   ngOnInit(): void {
-    this.profiles$ = this.profileService.getProfiles();
+    this.profiles$ = this.profileService.all();
   }
 
   public trackByProfileId(id: number, profile: Profile) {

@@ -7,10 +7,11 @@ import { ContextService } from '../../../core/services/context.service';
 import { AppContext } from '../../../core/models/app-context.enum';
 import { ProfileService } from '../../../core/services/profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile-card',
-  imports: [CommonModule, MatCardModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './profile-card.component.html',
   styleUrl: './profile-card.component.scss',
 })

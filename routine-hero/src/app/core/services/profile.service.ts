@@ -14,16 +14,32 @@ export class ProfileService {
     );
   }
 
-  public getProfiles(): Observable<Profile[]> {
+  public all(): Observable<Profile[]> {
     return this.profiles$.asObservable();
   }
 
-  public create(profile: Profile) {
+  public create(profile: Profile): void {
     profile.profileId = crypto.randomUUID();
     this.saveProfiles([...this.profiles$.value, profile]);
   }
 
-  public delete(id: string) {
+  public update(profile: Profile): void {
+    const profiles = this.profiles$.value;
+
+    const index = profiles.findIndex(
+      (profile) => profile.profileId === profile.profileId
+    );
+
+    if (index !== -1) {
+      const updatedProfiles = [...profiles];
+      updatedProfiles[index] = profile;
+      this.saveProfiles(updatedProfiles);
+    } else {
+      console.warn('Profil à mettre à jour non trouvé :', profile.profileId);
+    }
+  }
+
+  public delete(id: string): void {
     const updatedProfiles = this.profiles$.value.filter(
       (profile) => profile.profileId != id
     );
@@ -37,7 +53,7 @@ export class ProfileService {
     return jsonProfiles ? JSON.parse(jsonProfiles) : [];
   }
 
-  private saveProfiles(profiles: Profile[]) {
+  private saveProfiles(profiles: Profile[]): void {
     localStorage.setItem('profiles', JSON.stringify(profiles));
     this.profiles$.next(profiles);
   }

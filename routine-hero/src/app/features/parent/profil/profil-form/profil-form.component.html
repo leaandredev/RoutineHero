@@ -11,7 +11,7 @@
                     <mat-label>Prénom</mat-label>
                     <input matInput formControlName="profileName" maxlength="50">
                 </mat-form-field>
-                <button mat-raised-button color="secondary" type="submit">Créer</button>
+                <button mat-raised-button color="secondary" type="submit">{{ onUpdate ? 'MODIFIER' : 'CRÉER' }}</button>
             </div>
         </form>
     </div>

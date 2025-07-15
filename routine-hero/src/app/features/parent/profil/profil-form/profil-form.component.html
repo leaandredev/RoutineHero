@@ -6,7 +6,7 @@
         <h2>Créer un profil</h2>
         <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="flex-container flex-column">
-                <app-image-select formControlName="profilePicture"></app-image-select>
+                <app-image-select formControlName="profilePicture" [pictures]="profilePictures"></app-image-select>
                 <mat-form-field appearance="outline">
                     <mat-label>Prénom</mat-label>
                     <input matInput formControlName="profileName" maxlength="50">

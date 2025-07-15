@@ -38,6 +38,17 @@ export class ProfilFormComponent implements OnInit {
   public form: FormGroup | undefined;
   private id: string | undefined;
 
+  public profilePictures = [
+    { label: 'Chevalier', path: '/profile_icons/knight.png' },
+    { label: 'Cyclope', path: '/profile_icons/cyclops_5064863.png' },
+    { label: 'Princesse', path: '/profile_icons/princess_5101538.png' },
+    { label: 'Dragon', path: '/profile_icons/dragon_3410567.png' },
+    { label: 'Elfe', path: '/profile_icons/elf_9307751.png' },
+    { label: 'Fée', path: '/profile_icons/fairy_6756063.png' },
+    { label: 'Viking', path: '/profile_icons/viking_5101673.png' },
+    { label: 'Yéti', path: '/profile_icons/yeti_1149401.png' },
+  ];
+
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,

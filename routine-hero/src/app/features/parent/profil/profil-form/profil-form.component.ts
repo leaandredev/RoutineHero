@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { Profile } from '../../../../core/interface/profile.interface';
 
 @Component({
   selector: 'app-profil-form',
@@ -38,6 +39,13 @@ export class ProfilFormComponent implements OnInit {
       profilePicture: ['', Validators.required],
       name: ['', Validators.required],
     });
+  }
+
+  public submitForm() {
+    if (this.form && this.form.valid) {
+      const profilRequest = this.form.value as Profile;
+      // TODO: Appel vers le service pour enregistrer
+    }
   }
 
   public back() {

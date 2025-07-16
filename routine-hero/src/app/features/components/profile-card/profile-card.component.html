@@ -1,8 +1,8 @@
 <mat-card *ngIf="profile" class="margin-medium padding-small">
     <mat-card-header>
         <mat-card-title-group>
-            <img mat-card-sm-image alt="Image du profile" [src]="profile.profilePicture">
-            <mat-card-title>{{ profile.profileName }}</mat-card-title>
+            <img mat-card-sm-image alt="Image du profile" [src]="profile.picture">
+            <mat-card-title>{{ profile.name }}</mat-card-title>
         </mat-card-title-group>
     </mat-card-header>
     <mat-card-actions *ngIf="canModify">

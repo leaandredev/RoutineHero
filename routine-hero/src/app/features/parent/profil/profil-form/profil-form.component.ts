@@ -17,6 +17,7 @@ import { ProfileService } from '../../../../core/services/profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
+import { Picture } from '../../../../core/interfaces/picture.interface';
 
 @Component({
   selector: 'app-profil-form',
@@ -38,7 +39,7 @@ export class ProfilFormComponent implements OnInit {
   public form: FormGroup | undefined;
   private id: string | undefined;
 
-  public profilePictures = [
+  public profilePictures: Picture[] = [
     { label: 'Chevalier', path: '/profile_icons/knight.png' },
     { label: 'Cyclope', path: '/profile_icons/cyclops_5064863.png' },
     { label: 'Princesse', path: '/profile_icons/princess_5101538.png' },
@@ -101,11 +102,8 @@ export class ProfilFormComponent implements OnInit {
 
   private initForm(profile?: Profile): void {
     this.form = this.fb.group({
-      profilePicture: [
-        profile ? profile.profilePicture : '',
-        Validators.required,
-      ],
-      profileName: [profile ? profile.profileName : '', Validators.required],
+      profilePicture: [profile ? profile.picture : '', Validators.required],
+      profileName: [profile ? profile.name : '', Validators.required],
     });
   }
 }

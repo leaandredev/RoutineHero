@@ -96,8 +96,8 @@ export class ProfilFormComponent implements OnInit {
 
   private initForm(profile?: Profile): void {
     this.form = this.fb.group({
-      profilePicture: [profile ? profile.picture : '', Validators.required],
-      profileName: [profile ? profile.name : '', Validators.required],
+      picture: [profile ? profile.picture : '', Validators.required],
+      name: [profile ? profile.name : '', Validators.required],
     });
   }
 }

@@ -3,9 +3,9 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { ListeProfilesComponent } from '../../components/liste-profiles/liste-profiles.component';
-import { ContextService } from '../../../core/services/context.service';
-import { AppContext } from '../../../core/models/app-context.enum';
+import { ListeProfilesComponent } from '../../../components/liste-profiles/liste-profiles.component';
+import { ContextService } from '../../../../core/services/context.service';
+import { AppContext } from '../../../../core/models/app-context.enum';
 
 @Component({
   selector: 'app-parent-dashboard',

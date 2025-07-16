@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ListeProfilesComponent } from '../../components/liste-profiles/liste-profiles.component';
-import { ContextService } from '../../../core/services/context.service';
-import { AppContext } from '../../../core/models/app-context.enum';
+import { ListeProfilesComponent } from '../../../components/liste-profiles/liste-profiles.component';
+import { ContextService } from '../../../../core/services/context.service';
+import { AppContext } from '../../../../core/models/app-context.enum';
 
 @Component({
   selector: 'app-childrens-list',

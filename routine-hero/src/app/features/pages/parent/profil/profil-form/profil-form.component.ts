@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageSelectComponent } from '../../../../core/components/image-select/image-select.component';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -12,12 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { Profile } from '../../../../core/interfaces/profile.interface';
-import { ProfileService } from '../../../../core/services/profile.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
-import { Picture } from '../../../../core/interfaces/picture.interface';
+import { ImageSelectComponent } from '../../../../../core/components/image-select/image-select.component';
+import { Picture } from '../../../../../core/interfaces/picture.interface';
+import { ProfileService } from '../../../../../core/services/profile.service';
+import { Profile } from '../../../../../core/interfaces/profile.interface';
+import { PictureDataService } from '../../../../../core/services/picture-data.service';
 
 @Component({
   selector: 'app-profil-form',
@@ -39,26 +40,19 @@ export class ProfilFormComponent implements OnInit {
   public form: FormGroup | undefined;
   private id: string | undefined;
 
-  public profilePictures: Picture[] = [
-    { label: 'Chevalier', path: '/profile_icons/knight.png' },
-    { label: 'Cyclope', path: '/profile_icons/cyclops_5064863.png' },
-    { label: 'Princesse', path: '/profile_icons/princess_5101538.png' },
-    { label: 'Dragon', path: '/profile_icons/dragon_3410567.png' },
-    { label: 'Elfe', path: '/profile_icons/elf_9307751.png' },
-    { label: 'Fée', path: '/profile_icons/fairy_6756063.png' },
-    { label: 'Viking', path: '/profile_icons/viking_5101673.png' },
-    { label: 'Yéti', path: '/profile_icons/yeti_1149401.png' },
-  ];
+  public profilePictures: Picture[] = [];
 
   constructor(
     private fb: FormBuilder,
     private profileService: ProfileService,
     private matSnackBar: MatSnackBar,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private pictureDataService: PictureDataService
   ) {}
 
   ngOnInit(): void {
+    this.profilePictures = this.pictureDataService.getProfilePictures();
     const url = this.router.url;
     if (url.includes('update')) {
       this.onUpdate = true;

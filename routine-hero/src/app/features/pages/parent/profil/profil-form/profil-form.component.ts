@@ -14,11 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
-import { ImageSelectComponent } from '../../../../../core/components/image-select/image-select.component';
+import { ImageSelectComponent } from '../../../../components/image-select/image-select.component';
 import { Picture } from '../../../../../core/interfaces/picture.interface';
 import { ProfileService } from '../../../../../core/services/profile.service';
 import { Profile } from '../../../../../core/interfaces/profile.interface';
 import { PictureDataService } from '../../../../../core/services/picture-data.service';
+import { InputFormFieldComponent } from '../../../../components/input-form-field/input-form-field.component';
 
 @Component({
   selector: 'app-profil-form',
@@ -31,6 +32,7 @@ import { PictureDataService } from '../../../../../core/services/picture-data.se
     MatFormFieldModule,
     ReactiveFormsModule,
     MatButtonModule,
+    InputFormFieldComponent,
   ],
   templateUrl: './profil-form.component.html',
   styleUrl: './profil-form.component.scss',

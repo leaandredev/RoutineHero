@@ -23,39 +23,39 @@ export class PictureDataService {
       { label: 'Chambre', path: '/task_icons/bedroom_1069454.png' },
       {
         label: 'Couvert',
-        path: 'routine-hero/public/task_icons/dish_1069461.png',
+        path: '/task_icons/dish_1069461.png',
       },
       {
         label: 'Vaisselles',
-        path: 'routine-hero/public/task_icons/dishes_1907179.png',
+        path: '/task_icons/dishes_1907179.png',
       },
       {
         label: 'Lave-vaiselle',
-        path: 'routine-hero/public/task_icons/dishwasher_7935337.png',
+        path: '/task_icons/dishwasher_7935337.png',
       },
       {
         label: 'Linges étendus',
-        path: 'routine-hero/public/task_icons/drying_7212534.png',
+        path: '/task_icons/drying_7212534.png',
       },
       {
         label: 'Linges pliés',
-        path: 'routine-hero/public/task_icons/laundry-basket_2542434.png',
+        path: '/task_icons/laundry-basket_2542434.png',
       },
       {
         label: 'Douche',
-        path: 'routine-hero/public/task_icons/shower_2858233.png',
+        path: '/task_icons/shower_2858233.png',
       },
       {
         label: 'Éponge',
-        path: 'routine-hero/public/task_icons/sponge_2542427.png',
+        path: '/task_icons/sponge_2542427.png',
       },
       {
         label: 'Brosse à dent',
-        path: 'routine-hero/public/task_icons/toothbrush_1028807.png',
+        path: '/task_icons/toothbrush_1028807.png',
       },
       {
         label: 'Aspirateur',
-        path: 'routine-hero/public/task_icons/vaccum-cleaner_7935295.png',
+        path: '/task_icons/vaccum-cleaner_7935295.png',
       },
     ];
   }

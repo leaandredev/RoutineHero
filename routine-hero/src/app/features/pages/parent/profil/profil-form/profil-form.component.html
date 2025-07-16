@@ -6,11 +6,10 @@
         <h2>Créer un profil</h2>
         <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
             <div class="flex-container flex-column">
-                <app-image-select formControlName="picture" [pictures]="profilePictures"></app-image-select>
-                <mat-form-field appearance="outline">
-                    <mat-label>Prénom</mat-label>
-                    <input matInput formControlName="name" maxlength="50">
-                </mat-form-field>
+                <app-image-select formControlName="picture" label="Image du profil"
+                    [pictures]="profilePictures"></app-image-select>
+                <app-input-form-field label="Prénom" fieldType="input" [formControlName]="'name'"
+                    [maxLength]=50></app-input-form-field>
                 <button mat-raised-button color="secondary" type="submit">{{ onUpdate ? 'MODIFIER' : 'CRÉER' }}</button>
             </div>
         </form>

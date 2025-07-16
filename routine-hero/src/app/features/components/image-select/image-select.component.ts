@@ -15,7 +15,7 @@ import {
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
-import { Picture } from '../../interfaces/picture.interface';
+import { Picture } from '../../../core/interfaces/picture.interface';
 
 @Component({
   selector: 'app-image-select',
@@ -41,6 +41,7 @@ export class ImageSelectComponent implements ControlValueAccessor {
   public selectedPicture: string = this.defaultPicture;
 
   @Input() public pictures: Picture[] | null = null;
+  @Input() public label: string = '';
 
   onChange: (value: string) => void = () => {};
   onTouched: () => void = () => {};

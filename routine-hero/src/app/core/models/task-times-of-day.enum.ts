@@ -1,4 +1,4 @@
-export enum TaskTimeOfDays {
+export enum TaskTimesOfDay {
   Matin = 'matin',
   Midi = 'midi',
   ApresMidi = 'apres-midi',

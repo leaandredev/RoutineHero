@@ -5,10 +5,7 @@ export interface Task {
   description: string;
   category: string;
   mandatory: boolean;
-  assignedTo: string[];
-  frequency: string;
   daysOfWeek: string[];
   timesOfDay: string[];
-  points: number;
-  order: number;
+  assignedTo: string[];
 }

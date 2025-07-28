@@ -7,25 +7,21 @@
         <form *ngIf="form" [formGroup]="form" class="flex flex-column flex-center g-3">
             <div class="grid grid-responsive">
                 <div class="flex flex-column flex-center">
-
                     <app-image-select formControlName="picture" label="Icones"
                         [pictures]="taskPictures"></app-image-select>
-                    <app-input-form-field label="Prénom" fieldType="input" formControlName="name"
+                    <app-input-form-field label="Nom" fieldType="input" formControlName="name"
                         [maxLength]=50></app-input-form-field>
                     <app-input-form-field label="Description" fieldType="textarea" formControlName="description"
                         [maxLength]=500></app-input-form-field>
+                </div>
+                <div class="flex flex-column flex-center">
+                    <app-select-form-field label="Catégorie" [formControlName]="'category'"
+                        [options]="taskCategory"></app-select-form-field>
+                    <app-select-form-field label="Moment de la journée" [formControlName]="'timesOfDay'"
+                        [options]="taskTimesOfDay" [multiple]=true></app-select-form-field>
                     <mat-slide-toggle formControlName="mandatory" labelPosition="before" required>
                         Obligatoire
                     </mat-slide-toggle>
-                </div>
-                <div class="flex flex-column flex-center">
-
-                    <app-select-form-field label="Catégorie" [formControlName]="'category'"
-                        [options]="taskCategory"></app-select-form-field>
-                    <app-select-form-field label="Fréquence" [formControlName]="'frequency'"
-                        [options]="taskFrequency"></app-select-form-field>
-                    <app-select-form-field label="Moment de la journée" [formControlName]="'timesOfDay'"
-                        [options]="taskTimesOfDay" [multiple]=true></app-select-form-field>
                 </div>
                 <mat-button-toggle-group formControlName="daysOfWeek" multiple vertical>
                     <mat-button-toggle *ngFor="let day of taskDaysOfWeek" [value]="day">

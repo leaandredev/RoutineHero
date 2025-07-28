@@ -2,10 +2,10 @@
     <button mat-icon-button (click)="back()">
         <mat-icon>arrow_back</mat-icon>
     </button>
-    <div class="flex-container flex-column">
+    <div class="flex flex-center flex-column">
         <h2>Créer une tâche</h2>
         <form *ngIf="form" [formGroup]="form">
-            <div class="flex-container flex-column">
+            <div class="flex flex-center flex-column g-3">
                 <app-image-select formControlName="picture" label="Icones" [pictures]="taskPictures"></app-image-select>
                 <app-input-form-field label="Prénom" fieldType="input" formControlName="name"
                     [maxLength]=50></app-input-form-field>

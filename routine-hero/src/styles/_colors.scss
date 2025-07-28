@@ -1,0 +1,55 @@
+@use 'variables' as *;
+
+// Couleurs principales
+$colors: (
+    dark-blue: #2A95BF,
+    light-blue: #52CBD9,
+    green: #98BF5E,
+    yellow: #F2BA52,
+    pink: #F27979,
+    background: #ECEBE9
+);
+
+$logoBackgroundColor : #ECEBE9;
+
+// Variantes d'opacité
+$opacities: (
+    10,
+    25,
+    50,
+    75
+);
+
+// Génération des classes standard + transparentes
+@each $name, $hex in $colors {
+
+    // Couleur pleine
+    .text-#{"" + $name} {
+        color: #{$hex};
+    }
+
+    .bg-#{"" + $name} {
+        background-color: #{$hex};
+    }
+
+    .border-#{"" + $name} {
+        border-color: #{$hex};
+    }
+
+    // Variantes avec opacité
+    @each $opacity in $opacities {
+        $rgba: rgba($hex, calc($opacity / 100));
+
+        .text-#{"" + $name}-#{$opacity} {
+            color: $rgba;
+        }
+
+        .bg-#{"" + $name}-#{$opacity} {
+            background-color: $rgba;
+        }
+
+        .border-#{"" + $name}-#{$opacity} {
+            border-color: $rgba;
+        }
+    }
+}

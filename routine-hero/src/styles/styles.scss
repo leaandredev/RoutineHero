@@ -1,30 +1,29 @@
 @use '@angular/material' as mat;
-@use 'flex-grid.scss';
-@use 'colors.scss' as color;
-@use '_theme-colors.scss' as theme;
+@use 'framework' as *;
+@use 'colors' as *;
+@use 'theme-colors' as *;
 @use 'sass:map';
 
-:root {
-    @include mat.toolbar-overrides((container-background-color: color.$custom-background,
-            container-text-color: color.$custom-dark-blue,
-        ));
-}
 
 html {
-    @include mat.theme((color: (primary: theme.$primary-palette,
-                tertiary: theme.$tertiary-palette,
+    @include mat.theme((color: (primary: $primary-palette,
+                tertiary: $tertiary-palette,
                 theme-type: light,
             ),
             typography: Roboto,
             density: 0));
 }
 
+// 🎨 Couleur de la mat-toolbar (pour qu’elle match le logo)
+:root {
+    @include mat.toolbar-overrides((container-background-color: $logoBackgroundColor,
+            container-text-color: map.get($colors, 'dark-blue')));
+}
+
 html,
 body {
     height: 100%;
-}
-
-body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    gap: 1rem;
 }

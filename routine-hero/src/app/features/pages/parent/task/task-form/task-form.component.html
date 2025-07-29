@@ -16,7 +16,7 @@
                 </div>
                 <div class="flex flex-column flex-center">
                     <app-select-form-field label="Catégorie" [formControlName]="'category'"
-                        [options]="taskCategory"></app-select-form-field>
+                        [options]="taskType"></app-select-form-field>
                     <app-select-form-field label="Moment de la journée" [formControlName]="'timesOfDay'"
                         [options]="taskTimesOfDay" [multiple]=true></app-select-form-field>
                     <mat-slide-toggle formControlName="mandatory" labelPosition="before" required>

@@ -18,7 +18,6 @@ import { ImageSelectComponent } from '../../../../components/image-select/image-
 import { Picture } from '../../../../../core/interfaces/picture.interface';
 import { PictureDataService } from '../../../../../core/services/picture-data.service';
 import { TaskType } from '../../../../../core/models/task-type.enum';
-import { TaskFequency } from '../../../../../core/models/task-frequency.enum';
 import { TaskDays } from '../../../../../core/models/task-days.enum';
 import { TaskTimesOfDay } from '../../../../../core/models/task-times-of-day.enum';
 import { MatSelectModule } from '@angular/material/select';
@@ -50,8 +49,7 @@ import { InputFormFieldComponent } from '../../../../components/input-form-field
 export class TaskFormComponent implements OnInit {
   public form: FormGroup | undefined;
   public taskPictures: Picture[] = [];
-  public taskCategory: string[] = Object.values(TaskType);
-  public taskFrequency: string[] = Object.values(TaskFequency);
+  public taskType: string[] = Object.values(TaskType);
   public taskDaysOfWeek: string[] = Object.values(TaskDays);
   public taskTimesOfDay: string[] = Object.values(TaskTimesOfDay);
 
@@ -79,10 +77,8 @@ export class TaskFormComponent implements OnInit {
       description: [''],
       mandatory: [true, Validators.required],
       category: [TaskType.Routine, Validators.required],
-      frequency: [TaskFequency.Daily, Validators.required],
       daysOfWeek: [[Object.values(TaskDays)], Validators.required],
       timesOfDay: [[Object.values(TaskTimesOfDay)], Validators.required],
-      points: [1, Validators.required],
     });
   }
 }

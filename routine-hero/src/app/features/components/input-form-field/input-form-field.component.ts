@@ -33,6 +33,7 @@ export class InputFormFieldComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() fieldType: 'input' | 'textarea' = 'input';
   @Input() maxLength?: number;
+  @Input() required?: boolean = false;
 
   public value: string | null = null;
   public disabled = false;

@@ -2,9 +2,9 @@
     <mat-label>{{ label }}</mat-label>
 
     <input *ngIf="fieldType === 'input'" matInput [value]="value" (input)="handleInput($event)"
-        [attr.maxlength]="maxLength" [disabled]="disabled" />
+        [attr.maxlength]="maxLength" [disabled]="disabled" [required]="required" />
 
     <textarea *ngIf="fieldType === 'textarea'" matInput [value]="value" (input)="handleInput($event)"
-        [attr.maxlength]="maxLength" [disabled]="disabled">
+        [attr.maxlength]="maxLength" [disabled]="disabled" [required]="required">
   </textarea>
 </mat-form-field>

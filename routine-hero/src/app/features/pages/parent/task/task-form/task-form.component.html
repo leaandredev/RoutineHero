@@ -4,13 +4,13 @@
     </button>
     <div class="flex flex-center flex-column">
         <h2>Créer une tâche</h2>
-        <form *ngIf="form" [formGroup]="form" class="flex flex-column flex-center g-3">
+        <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()" class="flex flex-column flex-center g-3">
             <div class="grid grid-responsive">
                 <div class="flex flex-column flex-center">
                     <app-image-select formControlName="picture" label="Icones"
                         [pictures]="taskPictures"></app-image-select>
-                    <app-input-form-field label="Nom" fieldType="input" formControlName="name"
-                        [maxLength]=50></app-input-form-field>
+                    <app-input-form-field label="Nom" fieldType="input" formControlName="name" [maxLength]=50
+                        [required]=true></app-input-form-field>
                     <app-input-form-field label="Description" fieldType="textarea" formControlName="description"
                         [maxLength]=500></app-input-form-field>
                 </div>
@@ -19,7 +19,7 @@
                         [options]="taskType"></app-select-form-field>
                     <app-select-form-field label="Moment de la journée" [formControlName]="'timesOfDay'"
                         [options]="taskTimesOfDay" [multiple]=true></app-select-form-field>
-                    <mat-slide-toggle formControlName="mandatory" labelPosition="before" required>
+                    <mat-slide-toggle formControlName="mandatory" labelPosition="before">
                         Obligatoire
                     </mat-slide-toggle>
                 </div>

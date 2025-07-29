@@ -25,6 +25,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SelectFormFieldComponent } from '../../../../components/select-form-field/select-form-field.component';
 import { InputFormFieldComponent } from '../../../../components/input-form-field/input-form-field.component';
+import { Task } from '../../../../../core/interfaces/task.interface';
+import { TaskService } from '../../../../../core/services/task.service';
 
 @Component({
   selector: 'app-task-form',
@@ -58,12 +60,29 @@ export class TaskFormComponent implements OnInit {
     private matSnackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,
-    private pictureDataService: PictureDataService
+    private pictureDataService: PictureDataService,
+    private taskService: TaskService
   ) {}
 
   ngOnInit(): void {
     this.taskPictures = this.pictureDataService.getTaskPictures();
     this.initForm();
+  }
+
+  public submitForm() {
+    console.log('submit');
+    console.log(this.form?.value);
+
+    if (this.form && this.form.valid) {
+      console.log('form valid');
+
+      const taskRequest = this.form.value as Task;
+      this.taskService.create(taskRequest);
+      this.matSnackBar.open('La tâche a bien été créée.', 'Close', {
+        duration: 3000,
+      });
+      this.router.navigate(['/parent']);
+    }
   }
 
   public back() {
@@ -75,10 +94,10 @@ export class TaskFormComponent implements OnInit {
       picture: ['', Validators.required],
       name: ['', Validators.required],
       description: [''],
-      mandatory: [true, Validators.required],
+      mandatory: [true],
       category: [TaskType.Routine, Validators.required],
-      daysOfWeek: [[Object.values(TaskDays)], Validators.required],
-      timesOfDay: [[Object.values(TaskTimesOfDay)], Validators.required],
+      daysOfWeek: [[], Validators.required],
+      timesOfDay: [[], Validators.required],
     });
   }
 }

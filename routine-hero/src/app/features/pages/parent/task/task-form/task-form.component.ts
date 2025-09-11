@@ -27,6 +27,7 @@ import { SelectFormFieldComponent } from '../../../../components/select-form-fie
 import { InputFormFieldComponent } from '../../../../components/input-form-field/input-form-field.component';
 import { Task } from '../../../../../core/interfaces/task.interface';
 import { TaskService } from '../../../../../core/services/task.service';
+import { FormErrorComponent } from '../../../../components/form-error/form-error.component';
 
 @Component({
   selector: 'app-task-form',
@@ -44,6 +45,7 @@ import { TaskService } from '../../../../../core/services/task.service';
     MatSlideToggleModule,
     SelectFormFieldComponent,
     InputFormFieldComponent,
+    FormErrorComponent,
   ],
   templateUrl: './task-form.component.html',
   styleUrl: './task-form.component.scss',

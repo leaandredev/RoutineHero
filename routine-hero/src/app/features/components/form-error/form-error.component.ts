@@ -10,14 +10,8 @@ import { MatInputModule } from '@angular/material/input';
   imports: [MatInputModule],
 })
 export class FormErrorComponent {
-  @Input() controlName!: any;
+  @Input() control!: AbstractControl | null;
   @Input() labelField!: string;
-
-  constructor(private rootFormGroup: FormGroupDirective) {}
-
-  get control(): AbstractControl | null {
-    return this.rootFormGroup.control.get(this.controlName);
-  }
 
   get errorMessage(): string | null {
     if (
@@ -40,7 +34,6 @@ export class FormErrorComponent {
       if (this.control.errors['pattern']) {
         return 'Format invalide.';
       }
-      // Ajouter d’autres règles personnalisées ici
     }
     return null;
   }

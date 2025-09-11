@@ -15,15 +15,17 @@
                         [maxLength]=500></app-input-form-field>
                 </div>
                 <div class="flex flex-column flex-center">
-                    <app-select-form-field label="Catégorie" [formControlName]="'category'"
-                        [options]="taskType"></app-select-form-field>
+                    <app-select-form-field label="Catégorie" [formControlName]="'category'" [options]="taskType"
+                        [required]=true></app-select-form-field>
                     <app-select-form-field label="Moment de la journée" [formControlName]="'timesOfDay'"
-                        [options]="taskTimesOfDay" [multiple]=true></app-select-form-field>
+                        [options]="taskTimesOfDay" [multiple]=true [required]=true></app-select-form-field>
                     <mat-slide-toggle formControlName="mandatory" labelPosition="before">
                         Obligatoire
                     </mat-slide-toggle>
                 </div>
-                <mat-button-toggle-group formControlName="daysOfWeek" multiple vertical>
+                <app-form-error [control]="form.get('daysOfWeek')" [labelField]="'Jour de la semaine'"></app-form-error>
+
+                <mat-button-toggle-group formControlName="daysOfWeek" multiple vertical required>
                     <mat-button-toggle *ngFor="let day of taskDaysOfWeek" [value]="day">
                         {{ day }}</mat-button-toggle>
                 </mat-button-toggle-group>

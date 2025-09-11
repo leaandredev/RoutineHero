@@ -8,8 +8,8 @@
             <div class="flex flex-center flex-column">
                 <app-image-select formControlName="picture" label="Image du profil"
                     [pictures]="profilePictures"></app-image-select>
-                <app-input-form-field label="Prénom" fieldType="input" [formControlName]="'name'"
-                    [maxLength]=50></app-input-form-field>
+                <app-input-form-field label="Prénom" fieldType="input" [formControlName]="'name'" [maxLength]=50
+                    [required]=true></app-input-form-field>
                 <button mat-raised-button color="secondary" type="submit">{{ onUpdate ? 'MODIFIER' : 'CRÉER' }}</button>
             </div>
         </form>

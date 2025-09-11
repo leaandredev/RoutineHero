@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { parentRoutes } from './features/parent/parent.routes';
-import { childrenRoutes } from './features/children/children.routes';
+import { childrenRoutes } from './features/pages/children/children.routes';
+import { parentRoutes } from './features/pages/parent/parent.routes';
 
 export const routes: Routes = [
   {

@@ -1,0 +1,36 @@
+<div>
+    <button mat-icon-button (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="flex flex-center flex-column">
+        <h2>Créer une tâche</h2>
+        <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()" class="flex flex-column flex-center g-3">
+            <div class="grid grid-responsive">
+                <div class="flex flex-column flex-center">
+                    <app-image-select formControlName="picture" label="Icones"
+                        [pictures]="taskPictures"></app-image-select>
+                    <app-input-form-field label="Nom" fieldType="input" formControlName="name" [maxLength]=50
+                        [required]=true></app-input-form-field>
+                    <app-input-form-field label="Description" fieldType="textarea" formControlName="description"
+                        [maxLength]=500></app-input-form-field>
+                </div>
+                <div class="flex flex-column flex-center">
+                    <app-select-form-field label="Catégorie" [formControlName]="'category'" [options]="taskType"
+                        [required]=true></app-select-form-field>
+                    <app-select-form-field label="Moment de la journée" [formControlName]="'timesOfDay'"
+                        [options]="taskTimesOfDay" [multiple]=true [required]=true></app-select-form-field>
+                    <mat-slide-toggle formControlName="mandatory" labelPosition="before">
+                        Obligatoire
+                    </mat-slide-toggle>
+                </div>
+                <app-form-error [control]="form.get('daysOfWeek')" [labelField]="'Jour de la semaine'"></app-form-error>
+
+                <mat-button-toggle-group formControlName="daysOfWeek" multiple vertical required>
+                    <mat-button-toggle *ngFor="let day of taskDaysOfWeek" [value]="day">
+                        {{ day }}</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <button mat-raised-button color="secondary" type="submit">CREER</button>
+        </form>
+    </div>
+</div>

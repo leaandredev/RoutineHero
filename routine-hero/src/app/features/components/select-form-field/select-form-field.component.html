@@ -1,0 +1,9 @@
+<app-form-error *ngIf="control" [control]="control" [labelField]="label"></app-form-error>
+<mat-form-field appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+    <mat-select [value]="selectedOption" (selectionChange)="onOptionSelected($event.value)" [multiple]="multiple" [required]="required">
+        <mat-option *ngFor="let option of options" [value]="option">
+            {{ option }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

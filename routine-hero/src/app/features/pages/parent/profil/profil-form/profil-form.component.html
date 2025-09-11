@@ -1,0 +1,17 @@
+<div>
+    <button mat-icon-button (click)="back()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="flex flex-center flex-column">
+        <h2>Créer un profil</h2>
+        <form *ngIf="form" [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="flex flex-center flex-column">
+                <app-image-select formControlName="picture" label="Image du profil"
+                    [pictures]="profilePictures"></app-image-select>
+                <app-input-form-field label="Prénom" fieldType="input" [formControlName]="'name'" [maxLength]=50
+                    [required]=true></app-input-form-field>
+                <button mat-raised-button color="secondary" type="submit">{{ onUpdate ? 'MODIFIER' : 'CRÉER' }}</button>
+            </div>
+        </form>
+    </div>
+</div>
